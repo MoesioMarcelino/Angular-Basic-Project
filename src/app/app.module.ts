@@ -3,14 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductsComponent } from './main/products/products.component';
+import { PeopleComponent } from './main/people/people.component';
+import { MainModule } from './main/main.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainComponent,
+    ProductsComponent,
+    PeopleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HttpClientModule,
+    MainModule
   ],
   providers: [],
   bootstrap: [AppComponent]

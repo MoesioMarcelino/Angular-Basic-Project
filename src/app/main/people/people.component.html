@@ -1,0 +1,11 @@
+<h3>People</h3>
+
+<div *ngIf="(people$ | async)?.length > 0; else noProduct">
+  <ul>
+    <li *ngFor="let p of (people$ | async)">{{p.name}} | {{p.email}}</li>
+  </ul>
+</div>
+
+<ng-template #noProduct>
+  <p>No people found!</p>
+</ng-template>
