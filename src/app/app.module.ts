@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './main/products/products.component';
 import { PeopleComponent } from './main/people/people.component';
 import { MainModule } from './main/main.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MainModule } from './main/main.module';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    MainModule
+    MainModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

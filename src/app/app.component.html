@@ -1,7 +1,15 @@
 <mat-toolbar>
     <span>Title</span>
     <span fxFlex></span>
-    <div>
+    <div fxLayoutAlign="space-between center">
+      <button mat-button-icon routerLink="/auth/login">
+        <mat-icon>input</mat-icon>
+        Sing in
+      </button>
+      <button mat-button-icon routerLink="/auth/register">
+        <mat-icon>person_add</mat-icon>
+        Sing up
+      </button>
       <button mat-button-icon routerLink="/main/people">
         <mat-icon>home</mat-icon>
       </button>
