@@ -13,7 +13,7 @@ export class MainService {
 
   constructor(private http: HttpClient) { }
 
-  getPeople(page: number): Observable<Person[]> {
+  getPeople(): Observable<Person[]> {
     return this.http.get<Person[]>(`${this.url}/people`);
   }
 
