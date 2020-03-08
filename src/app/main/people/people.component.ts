@@ -19,7 +19,7 @@ export class PeopleComponent implements OnInit {
     this.people$ = this.mainService.getPeople()
       .pipe(
         tap((err) => {
-          console.error(err);
+          // console.error(err);
           return throwError(err);
         })
       );

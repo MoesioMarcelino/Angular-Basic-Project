@@ -1,3 +1,4 @@
+import { tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -33,15 +34,21 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (user) => {
           this.snackBar.open(
-            'Logged with sucess! Welcome ' + user.firstname + '!', 'OK', { duration: 3000 }
+            'Logged with sucess! Welcome ' + user.firstname + '!', 'OK', { duration: 5000 }
           );
 
           this.router.navigateByUrl('/');
         },
-        ({ error }) => {
-          console.log(error.message);
+        ({status, error}) => {
+          console.error(error.message);
+
+          if (status >= 500) {
+            this.snackBar.open(
+              'Server is offline, try again later in some moments', 'OK', { duration: 5000 }
+            );
+          }
           this.snackBar.open(
-            'User or password is wrong', 'OK', { duration: 3000 }
+            error.message, 'OK', { duration: 5000 }
           );
         }
       );

@@ -1,4 +1,4 @@
-import { tap } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.mainService.getProducts()
       .pipe(
-        tap((err) => {
+        catchError((err) => {
           console.error(err);
           return throwError(err);
         })

@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (sucess) => {
           this.snackBar.open(
-            'User save! Use your credentials to log in', 'OK', { duration: 3000 }
+            'User save! Use your credentials to log in', 'OK', { duration: 5000 }
           );
 
           this.router.navigateByUrl('/auth/login');
@@ -82,7 +82,7 @@ export class RegisterComponent implements OnInit {
         ({ error }) => {
           console.error(error);
           this.snackBar.open(
-            error.message, 'OK', { duration: 3000 }
+            error.message, 'OK', { duration: 5000 }
           );
         }
       );
