@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
+  loading = false;
+
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -30,6 +32,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     const credentials = this.loginForm.value;
 
+    this.loading = true;
+
     this.authService.login(credentials)
       .subscribe(
         (user) => {
@@ -38,6 +42,7 @@ export class LoginComponent implements OnInit {
           );
 
           this.router.navigateByUrl('/');
+          this.loading = false;
         },
         ({status, error}) => {
           console.error(error.message);
@@ -45,11 +50,15 @@ export class LoginComponent implements OnInit {
           if (status >= 500) {
             this.snackBar.open(
               'Server is offline, try again later in some moments', 'OK', { duration: 5000 }
-            );
+              );
+            this.loading = false;
           }
+
           this.snackBar.open(
             error.message, 'OK', { duration: 5000 }
-          );
+            );
+
+          this.loading = false;
         }
       );
   }

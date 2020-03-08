@@ -12,17 +12,22 @@ import { MainService } from '../main.service';
 export class ProductsComponent implements OnInit {
 
   products$: Observable<Product[]>;
+  loading = false;
 
   constructor(private mainService: MainService) { }
 
   ngOnInit(): void {
+    this.loading = true;
     this.products$ = this.mainService.getProducts()
       .pipe(
         catchError((err) => {
           console.error(err);
+          this.loading = false;
           return throwError(err);
         })
       );
+
+    this.loading = false;
   }
 
 }

@@ -1,11 +1,13 @@
-<h3>People</h3>
+<h3>Products</h3>
 
-<div *ngIf="(products$ | async)?.length > 0; else noProduct">
+<div *ngIf="((products$ | async)?.length > 0) && !loading ; else noProduct">
   <ul>
     <li *ngFor="let p of (products$ | async)">{{p.name}} | {{p.department}} | {{p.price}}</li>
   </ul>
 </div>
 
+
+
 <ng-template #noProduct>
-  <p>No products found!</p>
+  <mat-progress-spinner *ngIf="loading" mode="indeterminate" style="margin:0 auto;" ></mat-progress-spinner>
 </ng-template>

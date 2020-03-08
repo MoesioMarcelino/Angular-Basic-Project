@@ -28,6 +28,7 @@ export class AuthService {
           localStorage.setItem('token', user.token);
           this.subjectLogged$.next(true);
           this.subjectUser$.next(user);
+          this.getUser();
         })
       );
   }
@@ -44,16 +45,17 @@ export class AuthService {
 
   checkTokenValidation(): Observable<boolean> {
     return this.http
-      .get<User>(`${this.url}/user`)
+      .get<User>(`${this.url}/session`)
       .pipe(
         tap((u: User) => {
           if (u) {
+            localStorage.setItem('token', u.token);
             this.subjectLogged$.next(true);
             this.subjectUser$.next(u);
           }
         }),
         map((u: User) => u ? true : false),
-        catchError((error) => {
+        catchError(() => {
           this.logout();
           return of(false);
         })

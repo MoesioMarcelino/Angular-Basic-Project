@@ -1,4 +1,4 @@
-import { tap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../main.service';
@@ -12,16 +12,17 @@ import { Person } from '../person';
 export class PeopleComponent implements OnInit {
 
   people$: Observable<Person[]>;
+  peopleColumns: string[] = ['id', 'name', 'country', 'email', 'company'];
 
   constructor(private mainService: MainService) { }
 
   ngOnInit(): void {
     this.people$ = this.mainService.getPeople()
       .pipe(
-        tap((err) => {
-          // console.error(err);
+        catchError((err => {
+          console.error(err);
           return throwError(err);
-        })
+        }))
       );
   }
 
