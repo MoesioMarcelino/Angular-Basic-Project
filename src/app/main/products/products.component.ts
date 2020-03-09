@@ -12,6 +12,7 @@ import { MainService } from '../main.service';
 export class ProductsComponent implements OnInit {
 
   products$: Observable<Product[]>;
+  productsColumn = ['id', 'name', 'department', 'price'];
   loading = false;
 
   constructor(private mainService: MainService) { }

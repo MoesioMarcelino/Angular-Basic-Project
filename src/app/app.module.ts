@@ -12,13 +12,17 @@ import { ProductsComponent } from './main/products/products.component';
 import { PeopleComponent } from './main/people/people.component';
 import { MainModule } from './main/main.module';
 import { AuthModule } from './auth/auth.module';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { MapsComponent } from './main/maps/maps.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     ProductsComponent,
-    PeopleComponent
+    PeopleComponent,
+    MapsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,11 @@ import { AuthModule } from './auth/auth.module';
     MaterialModule,
     HttpClientModule,
     MainModule,
-    AuthModule.forRoot()
+    AuthModule.forRoot(),
+    GoogleMapsModule,
+    AgmCoreModule.forRoot({
+      apiKey: ''
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

@@ -1,13 +1,32 @@
 <h3>Products</h3>
+<h3 style="text-align: center;">Products</h3>
+<mat-divider class="divider"></mat-divider>
+<div fxLayout="row" fxLayoutAlign="space-around stretch" class="card-table"
+    *ngIf="((products$ | async)?.length > 0) && !loading ; else noProduct">
+  <table fxFlex mat-table [dataSource]="products$" >
+         <!-- matSort matSortActive="created" matSortDisableClear > -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>#</th>
+      <td mat-cell *matCellDef="let p; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let p">{{ p.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="department">
+      <th mat-header-cell *matHeaderCellDef>Department</th>
+      <td mat-cell *matCellDef="let p">{{ p.department }}</td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let p">{{ p.price }}</td>
+    </ng-container>
 
-<div *ngIf="((products$ | async)?.length > 0) && !loading ; else noProduct">
-  <ul>
-    <li *ngFor="let p of (products$ | async)">{{p.name}} | {{p.department}} | {{p.price}}</li>
-  </ul>
+    <tr mat-header-row *matHeaderRowDef="productsColumn"></tr>
+    <tr mat-row *matRowDef="let row; columns: productsColumn"></tr>
+  </table>
 </div>
 
-
-
 <ng-template #noProduct>
-  <mat-progress-spinner *ngIf="loading" mode="indeterminate" style="margin:0 auto;" ></mat-progress-spinner>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate" style="margin:0 auto;" ></mat-progress-bar>
 </ng-template>
