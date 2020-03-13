@@ -1,3 +1,4 @@
+import { NewPersonComponent } from './people/new-person/new-person.component';
 import { MapsComponent } from './maps/maps.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,7 +10,8 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'people' },
   { path: 'people', component: PeopleComponent },
   { path: 'products', component: ProductsComponent },
-  { path: 'maps', component: MapsComponent }
+  { path: 'maps', component: MapsComponent },
+  { path: 'people/new', component: NewPersonComponent }
 ];
 
 @NgModule({

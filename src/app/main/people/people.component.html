@@ -1,7 +1,15 @@
-<h3 style="text-align: center;">People</h3>
+<div class="top-people">
+  <div></div>
+  <h3>People</h3>
+  <button mat-icon-button routerLink="/main/people/new">
+    <mat-icon>add_circle</mat-icon>
+    Add Person
+  </button>
+</div>
 <mat-divider class="divider"></mat-divider>
 <div fxLayout="row" fxLayoutAlign="space-around stretch" class="card-table"
 *ngIf="((people$ | async)?.length > 0) && !loading ; else noPeople">
+  <button mat-button></button>
   <table fxFlex mat-table [dataSource]="people$">
          <!-- matSort matSortActive="created" matSortDisableClear > -->
     <ng-container matColumnDef="id">

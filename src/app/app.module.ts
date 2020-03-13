@@ -15,6 +15,8 @@ import { AuthModule } from './auth/auth.module';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MapsComponent } from './main/maps/maps.component';
 import { AgmCoreModule } from '@agm/core';
+import { NewPersonComponent } from './main/people/new-person/new-person.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { AgmCoreModule } from '@agm/core';
     MainComponent,
     ProductsComponent,
     PeopleComponent,
-    MapsComponent
+    MapsComponent,
+    NewPersonComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,9 @@ import { AgmCoreModule } from '@agm/core';
     GoogleMapsModule,
     AgmCoreModule.forRoot({
       apiKey: ''
-    })
+    }),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
