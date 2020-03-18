@@ -30,7 +30,7 @@ export class NewPersonComponent implements OnInit {
   }
 
   onSubmit() {
-    const name = this.formAddPerson.value.firstname + this.formAddPerson.value.lastname;
+    const name = this.formAddPerson.value.firstname + ' ' + this.formAddPerson.value.lastname;
     const person: Person = {
       ...this.formAddPerson.value, name
     }
