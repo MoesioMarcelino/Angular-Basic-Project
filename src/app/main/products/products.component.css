@@ -1,3 +1,10 @@
+.top-people {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
 .divider {
   margin: 30px;
 }

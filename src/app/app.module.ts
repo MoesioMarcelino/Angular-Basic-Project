@@ -17,6 +17,7 @@ import { MapsComponent } from './main/maps/maps.component';
 import { AgmCoreModule } from '@agm/core';
 import { NewPersonComponent } from './main/people/new-person/new-person.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewProductComponent } from './main/products/new-product/new-product.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PeopleComponent,
     MapsComponent,
     NewPersonComponent,
+    NewProductComponent,
   ],
   imports: [
     BrowserModule,

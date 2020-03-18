@@ -16,6 +16,10 @@ export class PersonService {
     private http: HttpClient,
     private authService: AuthService) { }
 
+  getPeople(): Observable<Person[]> {
+    return this.http.get<Person[]>(this.url);
+  }
+
   createPerson(person: Person): Observable<Person> {
     return this.http
       .post<Person>(`${this.url}/new`, person)

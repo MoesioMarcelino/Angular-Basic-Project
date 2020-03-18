@@ -3,6 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product';
 import { MainService } from '../main.service';
+import { ProductService } from 'src/app/services/products/product.service';
 
 @Component({
   selector: 'app-products',
@@ -15,11 +16,11 @@ export class ProductsComponent implements OnInit {
   productsColumn = ['id', 'name', 'department', 'price'];
   loading = false;
 
-  constructor(private mainService: MainService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.loading = true;
-    this.products$ = this.mainService.getProducts()
+    this.products$ = this.productService.getProducts()
       .pipe(
         catchError((err) => {
           console.error(err);

@@ -1,5 +1,13 @@
-<h3>Products</h3>
-<h3 style="text-align: center;">Products</h3>
+<div class="top-people">
+  <div></div>
+  <h3>Products</h3>
+  <button mat-icon-button routerLink="/main/products/new">
+    <mat-icon>add_circle</mat-icon>
+    Add Product
+  </button>
+</div>
+<!-- <h3>Products</h3>
+<h3 style="text-align: center;">Products</h3> -->
 <mat-divider class="divider"></mat-divider>
 <div fxLayout="row" fxLayoutAlign="space-around stretch" class="card-table"
     *ngIf="((products$ | async)?.length > 0) && !loading ; else noProduct">

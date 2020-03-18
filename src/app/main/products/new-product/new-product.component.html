@@ -1,0 +1,91 @@
+<div fxLayout="row" fxLayoutAlign="space-around center" class="card-new-person">
+  <div
+    align="center"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    class="register-form"
+  >
+    <form role="form" [formGroup]="formAddProduct" (ngSubmit)="onSubmit()">
+      <mat-card class="mat-elevation-z8" flex="80">
+        <mat-card-title>Add new product</mat-card-title>
+
+        <mat-card-content
+          fxLayout="column"
+          fxLayoutAlign="space-around stretch"
+        >
+          <mat-form-field fxFlex="45">
+            <input
+              matInput
+              type="text"
+              formControlName="name"
+              autocomplete="name"
+              placeholder="Name's product"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+          <input
+            matInput
+            type="text"
+            formControlName="department"
+            autocomplete="department"
+            placeholder="Department"
+          />
+          </mat-form-field>
+
+            <mat-form-field>
+              <input
+                matInput
+                type="text"
+                formControlName="price"
+                autocomplete="price"
+                placeholder="Price"
+              />
+            </mat-form-field>
+
+          <!-- <mat-form-field>
+            <input
+              matInput
+              type="text"
+              formControlName="country"
+              autocomplete="country"
+              placeholder="Country"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              matInput
+              type="text"
+              formControlName="email"
+              autocomplete="email"
+              placeholder="Email"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              matInput
+              type="text"
+              formControlName="company"
+              autocomplete="company"
+              placeholder="Company"
+            />
+          </mat-form-field> -->
+
+          <div fxLayout="row" fxLayoutAlign="end">
+            <button
+              mat-button
+              color="primary"
+              type="submit"
+              [disabled]="!formAddProduct.valid"
+            >
+              <mat-icon>done</mat-icon>
+              Register
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+</div>

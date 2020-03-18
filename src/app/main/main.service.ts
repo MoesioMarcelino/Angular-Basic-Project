@@ -13,11 +13,11 @@ export class MainService {
 
   constructor(private http: HttpClient) { }
 
-  getPeople(): Observable<Person[]> {
-    return this.http.get<Person[]>(`${this.url}/people`);
-  }
+  // getPeople(): Observable<Person[]> {
+  //   return this.http.get<Person[]>(`${this.url}/people`);
+  // }
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.url}/products`);
-  }
+  // getProducts(): Observable<Product[]> {
+  //   return this.http.get<Product[]>(`${this.url}/products`);
+  // }
 }
