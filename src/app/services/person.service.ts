@@ -1,6 +1,6 @@
 import { AuthService } from './../auth/auth.service';
 import { tap, catchError } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Person } from '../main/person';
@@ -16,8 +16,11 @@ export class PersonService {
     private http: HttpClient,
     private authService: AuthService) { }
 
-  getPeople(): Observable<Person[]> {
-    return this.http.get<Person[]>(this.url);
+  getPeople(limit): Observable<Person[]> {
+    const params = new HttpParams()
+      .set('limit', limit);
+
+    return this.http.get<Person[]>(this.url, { params });
   }
 
   createPerson(person: Person): Observable<Person> {

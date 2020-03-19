@@ -15,12 +15,13 @@ export class PeopleComponent implements OnInit {
   people$: Observable<Person[]>;
   peopleColumns: string[] = ['id', 'name', 'country', 'email', 'company'];
   loading = false;
+  limit = 10;
 
   constructor(private personService: PersonService) { }
 
   ngOnInit(): void {
     this.loading = true;
-    this.people$ = this.personService.getPeople()
+    this.people$ = this.personService.getPeople(this.limit)
       .pipe(
         catchError((err => {
           this.loading = false;
